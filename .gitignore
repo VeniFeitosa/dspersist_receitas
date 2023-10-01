@@ -2,4 +2,8 @@
 *.zip
 
 # Ignorar arquivos CSV
-*.csv
+# *.csv
+
+*.json
+
+*.xml
