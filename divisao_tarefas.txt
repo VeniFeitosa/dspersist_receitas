@@ -1,0 +1,12 @@
+Gustavo
+- App.java
+- CadastroCSV.java
+- SHA256.java
+- QtdCategorias.java
+- Categoria.java
+
+Veni
+- CompactarCSV.java
+- ConverterCSV.java
+- lerCSV.java
+- Categorias.java
