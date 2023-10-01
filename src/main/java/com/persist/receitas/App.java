@@ -1,9 +1,18 @@
 package com.persist.receitas;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 // import ReceitaCulinaria;
 class salvarCSV{
@@ -52,12 +61,63 @@ class salvarCSV{
     }
 }
 
+class qtdEntidades{
+    public static int qtd(){
+        try {
+            InputStream is = new FileInputStream("dados.csv");
+            Scanner entrada = new Scanner(is);
+            int count = 0;
+            while (entrada.hasNextLine()) {
+                // System.out.println(entrada.nextLine());
+                count++;
+                entrada.nextLine();
+            }
+            is.close();
+            return count - 1;
+        } catch (Exception e) {
+            // TODO: handle exception
+            return -1;
+        }
+        
+    }
+}
+
+class compactarCSV{
+    public static void compactar(String fileName) {
+        try {
+            // Cria um novo arquivo ZipOutputStream
+            FileOutputStream out = new FileOutputStream("arquivo.zip");
+            ZipOutputStream zipOutputStream = new ZipOutputStream(out);
+
+            // Adiciona o arquivo "arquivo.csv" ao arquivo zip
+            File file = new File(fileName);
+            ZipEntry entry = new ZipEntry(file.getName());
+            zipOutputStream.putNextEntry(entry);
+
+            // Lê os dados do arquivo CSV e os escreve no arquivo zip
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                zipOutputStream.write((line + "\n").getBytes());
+            }
+
+            // Fecha o arquivo zip
+            zipOutputStream.close();
+            System.out.println("Arquivo CSV compactado com sucesso.");
+        } catch (Exception e) {
+            // e.printStackTrace();
+        }
+    }
+}
+
 public class App 
 {
     public static void main( String[] args )
     {
         
-        salvarCSV.salvar();
+        // salvarCSV.salvar();
+        // System.out.println(qtdEntidades.qtd());
+        compactarCSV.compactar("dados.csv");
         // ReceitaCulinaria r1 = new ReceitaCulinaria(1, "Mousse de Limão", "Sobremesa");
         // List<Ingrediente> ingredientes;
         // ingredientes = new ArrayList<>();

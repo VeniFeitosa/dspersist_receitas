@@ -1,0 +1,5 @@
+# Ignorar arquivos ZIP
+*.zip
+
+# Ignorar arquivos CSV
+*.csv
