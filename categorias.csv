@@ -1,6 +1,16 @@
 Id;Nome;Descrição;Receitas;Dificuldade
-0;sim;haha;bolo,pudim;4
-2;doce;sim;cacau;3
-3;salgados;sal;coxinha,empada;3
-5;asdas;asdasff;ssss;2
-5;asdasd;dfsdf;asdasdasd;2
+1;Sobremesa;Sobremesas faceis;brigadeiro,pudim;1
+2;salgados;salgados de festa;coxinha,empada,canudinho;2
+3;Prato Principal;Pratos principais para o jantar;lasanha,frango assado,risoto;3
+4;Aperitivo;Aperitivos para acompanhar bebidas;batata frita,amendoins,queijo;2
+5;Sopas;Sopas para dias frios;caldo verde,canja,sopa de abóbora;2
+6;Bebidas;Bebidas refrescantes;caipirinha,limonada,suco de laranja;1
+7;Sobremesa;Sobremesas elaboradas;cheesecake,tiramisu,mousse de chocolate;4
+8;Pratos principais;Pratos principais rápidos;macarrão,arroz,carne;3
+9;Acompanhamentos;Acompanhamentos simples;batata frita,salada,pão;4
+10;Bebidas;Bebidas refrescantes;suco,água,refrigerante;5
+11;Doces;Doces tradicionais;bolo,chocolate,doce de leite;4
+12;Saladas;Saladas saudáveis;alface,tomate,cenoura;2
+13;Entradas;Entradas sofisticadas;carpaccio,ceviche,caviar;5
+14;Petiscos;Petiscos para churrasco;carne,frango,queijo;3
+15;Cozinha internacional;Cozinha italiana;pizza,pasta,gelato;416;teste;akakak;akakak;3

@@ -1,6 +1,8 @@
 package com.persist.receitas;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -8,12 +10,9 @@ import java.util.Scanner;
 public class CadastroCSV {
     public static void cadastrar(String arquivoCsv) throws IOException {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Digite o id da categoria: ");
-        int id = sc.nextInt();
-        sc.nextLine();
+    
         System.out.print("Digite nome da categoria: ");
         String nome = sc.nextLine();
-        System.out.println(nome);
         System.out.print("Digite a descricao da categoria: ");
         String descricao = sc.nextLine();
         // EU NAO QUERIA USAR ARRAYLIST, ENTAO USEI UMA STRINGBUILDER PRA
@@ -51,6 +50,27 @@ public class CadastroCSV {
             dificuldade = sc.nextInt();
             sc.nextLine();
         }
+
+        int id = 1;
+        if (QtdCategorias.qtd_categorias(arquivoCsv) != -1) {
+            // Abre o arquivo CSV para leitura.
+            FileReader fr = new FileReader(arquivoCsv);
+            BufferedReader br = new BufferedReader(fr);
+
+            int qtdLinhas = QtdCategorias.qtd_categorias(arquivoCsv);
+
+            // Lê o arquivo CSV linha por linha.
+            String linha = br.readLine();
+            for (int i = 0; i < qtdLinhas; i++) {
+                linha = br.readLine();
+            }
+
+            // Obtém o primeiro elemento da linha.
+            String[] ultimaLinha = linha.split(";");
+            String primeiroElemento = ultimaLinha[0];
+            id += Integer.parseInt(primeiroElemento);
+        }
+
         // INSTANCIA UMA NOVA CATEGORIA E ADICIONA NO ARQUIVO CSV
         Categoria categoria = new Categoria(id, nome, descricao, receita, dificuldade);
         BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoCsv, true));
@@ -63,6 +83,7 @@ public class CadastroCSV {
                     + ";" + categoria.getDificuldade() + "\n");
 
         writer.close();
-        // sc.close();
+
+        //sc.close();
     }
 }
