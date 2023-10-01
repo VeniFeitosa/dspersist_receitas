@@ -15,16 +15,14 @@ public class CadastroCSV {
         String nome = sc.nextLine();
         System.out.print("Digite a descricao da categoria: ");
         String descricao = sc.nextLine();
-        // EU NAO QUERIA USAR ARRAYLIST, ENTAO USEI UMA STRINGBUILDER PRA
-        // PODER IR "SOMANDO" AS STRINGS E DEPOIS SO ATRIBUIR AO ATRIBUTO
-        // RECEITAS
+       
         StringBuilder sb = new StringBuilder();
-        // OBRIGATORIAMENTE UMA RECEITA PRECISA SER CADASTRADA
+        
         System.out.print("Digite uma receita da categoria da categoria: ");
         String receita = sc.nextLine();
         sb.append(receita);
         boolean repetir = true;
-        // ENQUANTO HOUVER RECEITAS PRA ADD, O LACO SE REPETE
+        
         while(repetir) {
             System.out.print("Deseja adicionar mais uma receita?(S/N): ");
             String resposta = sc.nextLine();
@@ -34,12 +32,10 @@ public class CadastroCSV {
                 sb.append(",");
                 sb.append(novaReceita);
             } else {
-                //System.out.println("entrou no else");
                 repetir = false;
             }
         }
 
-        // RECEITA RECEBE O QUE TINHA NA STRINGBUILDER
         receita = sb.toString();
     
         System.out.print("Digite o nivel de dificuldade da categoria(1-5): ");
