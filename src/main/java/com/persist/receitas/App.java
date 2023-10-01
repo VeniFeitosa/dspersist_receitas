@@ -47,7 +47,9 @@ class App{
                     SHA256.printSHA256(arquivoCsv);
                     break;
                 default:
-                    System.out.println("Digite uma opção válida.");
+                    if (opc != 0) {
+                        System.out.println("Digite uma opção válida.");
+                    }
                     break;
             }
         } while (opc != 0);
