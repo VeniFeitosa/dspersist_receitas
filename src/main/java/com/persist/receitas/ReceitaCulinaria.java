@@ -54,10 +54,15 @@ public class ReceitaCulinaria implements Serializable {
         }
     }
 
-    public void listarIngredientes(){
+    public String listarIngredientes(){
+        String res = "[";
         for (Ingrediente ingrediente : this.ingredientes) {
-            System.out.println(ingrediente);
+            // System.out.println(ingrediente);
+            res += String.format("%s;", ingrediente);
         }
+        res += "]";
+        // System.out.println(res);
+        return res;
     }
 
     public void adicionarInstrucoes(){
@@ -77,4 +82,3 @@ public class ReceitaCulinaria implements Serializable {
         return "ReceitaCulinaria [id = " + id + ", nome = " + nome + ", categoria = " + categoria + "]";
     }
 }
-
