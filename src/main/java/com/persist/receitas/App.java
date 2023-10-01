@@ -48,6 +48,7 @@ class App{
                     break;
                 default:
                     System.out.println("Digite uma opção válida.");
+                    break;
             }
         } while (opc != 0);
         
