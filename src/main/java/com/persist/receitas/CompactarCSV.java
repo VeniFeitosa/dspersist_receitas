@@ -14,26 +14,26 @@ public class CompactarCSV {
             // Cria um novo arquivo ZipOutputStream
             String[] nomeArquivo = arquivoCsv.split("\\.");
             FileOutputStream out = new FileOutputStream(nomeArquivo[0] + ".zip");
-            ZipOutputStream zipOutputStream = new ZipOutputStream(out);
+            ZipOutputStream zos = new ZipOutputStream(out);
 
             // Adiciona o arquivo "arquivo.csv" ao arquivo zip
             File file = new File(arquivoCsv);
-            ZipEntry entry = new ZipEntry(file.getName());
-            zipOutputStream.putNextEntry(entry);
+            ZipEntry entrada = new ZipEntry(file.getName());
+            zos.putNextEntry(entrada);
 
             // Lê os dados do arquivo CSV e os escreve no arquivo zip
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+            BufferedReader bfr = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
             String line;
-            while ((line = reader.readLine()) != null) {
-                zipOutputStream.write((line + "\n").getBytes());
+            while ((line = bfr.readLine()) != null) {
+                zos.write((line + "\n").getBytes());
             }
 
             // Fecha o arquivo zip
-            zipOutputStream.close();
-            reader.close();
+            zos.close();
+            bfr.close();
             System.out.println("Arquivo CSV compactado com sucesso.");
         } catch (Exception e) {
-            // e.printStackTrace();
+            System.out.println("Erro ao compactar.");
         }
         
     }

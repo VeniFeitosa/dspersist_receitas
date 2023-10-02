@@ -49,29 +49,27 @@ public class CadastroCSV {
 
         int id = 1;
         if (QtdCategorias.qtd_categorias(arquivoCsv) != -1) {
-            // Abre o arquivo CSV para leitura.
+
             FileReader fr = new FileReader(arquivoCsv);
             BufferedReader br = new BufferedReader(fr);
 
             int qtdLinhas = QtdCategorias.qtd_categorias(arquivoCsv);
 
-            // Lê o arquivo CSV linha por linha.
             String linha = br.readLine();
             for (int i = 0; i < qtdLinhas; i++) {
                 linha = br.readLine();
             }
 
-            // Obtém o primeiro elemento da linha.
             String[] ultimaLinha = linha.split(";");
             String primeiroElemento = ultimaLinha[0];
             id += Integer.parseInt(primeiroElemento);
+            br.close();
         }
 
-        // INSTANCIA UMA NOVA CATEGORIA E ADICIONA NO ARQUIVO CSV
         Categoria categoria = new Categoria(id, nome, descricao, receita, dificuldade);
         BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoCsv, true));
+        
         if (QtdCategorias.qtd_categorias(arquivoCsv) <= 0) {
-            //SIGNIFICA QUE O ARQUIVO ESTÁ VAZIO
             writer.write("Id;Nome;Descrição;Receitas;Dificuldade\n");
         }
         writer.write(categoria.getId() + ";" + categoria.getNome() + ";" 
